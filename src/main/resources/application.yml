@@ -1,0 +1,21 @@
+keycloak:
+  realm: my-realm
+  resource: springboot-app
+  auth-server-url: http://localhost:8080/
+  ssl-required: external
+  credentials:
+    secret: <client-secret>
+  use-resource-role-mappings: true
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: springboot-app
+            client-secret: <client-secret>
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/my-realm
